@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/AlexanderUngefug/crossplane-argocd.git
     path: applications
-    targetRevision: main
+    targetRevision: only-keycloak
   syncPolicy:
     automated:
       prune: true

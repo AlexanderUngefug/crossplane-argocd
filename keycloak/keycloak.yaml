@@ -34,11 +34,7 @@ spec:
             - name: KEYCLOAK_ADMIN_PASSWORD
               value: admin
           ports:
-            - containerPort: 8080
-      volumes:
-        - name: keycloak-storage
-          persistentVolumeClaim:
-            claimName: keycloak-pvc
+            - containerPort: 8080      
 ---
 apiVersion: v1
 kind: Service

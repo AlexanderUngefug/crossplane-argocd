@@ -17,6 +17,9 @@ spec:
         - name: keycloak
           image: quay.io/keycloak/keycloak:25.0.1
           args: ["start-dev"]
+          volumeMounts:
+           - mountPath: /opt/keycloak/data
+             name: keycloak-storage
           env:
             - name: KC_DB
               value: postgres
@@ -32,6 +35,10 @@ spec:
               value: admin
           ports:
             - containerPort: 8080
+      volumes:
+        - name: keycloak-storage
+          persistentVolumeClaim:
+            claimName: keycloak-pvc
 ---
 apiVersion: v1
 kind: Service

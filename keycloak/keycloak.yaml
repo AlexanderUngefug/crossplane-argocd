@@ -18,8 +18,8 @@ spec:
           image: quay.io/keycloak/keycloak:25.0.1
           args: ["start-dev"]
           volumeMounts:
-           - mountPath: /opt/keycloak/data
-             name: keycloak-storage
+            - mountPath: /opt/keycloak/data
+              name: keycloak-storage
           env:
             - name: KC_DB
               value: postgres
@@ -35,6 +35,9 @@ spec:
               value: admin
           ports:
             - containerPort: 8080      
+      volumes:  # Add this section
+        - name: keycloak-storage
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
